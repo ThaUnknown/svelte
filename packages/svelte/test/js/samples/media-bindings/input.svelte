@@ -11,6 +11,7 @@
 	export let seeking;
 	export let ended;
 	export let readyState;
+	export let networkState;
 </script>
 
-<audio bind:buffered bind:seekable bind:played bind:currentTime bind:duration bind:paused bind:volume bind:muted bind:playbackRate bind:seeking bind:ended bind:readyState/>
+<audio bind:buffered bind:seekable bind:played bind:currentTime bind:duration bind:paused bind:volume bind:muted bind:playbackRate bind:seeking bind:ended bind:readyState bind:networkState/>

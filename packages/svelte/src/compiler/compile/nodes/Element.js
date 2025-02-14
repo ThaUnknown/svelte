@@ -1182,7 +1182,8 @@ export default class Element extends Node {
 				name === 'playbackRate' ||
 				name === 'seeking' ||
 				name === 'ended' ||
-				name === 'readyState'
+				name === 'readyState' ||
+				name === 'networkState'
 			) {
 				if (this.name !== 'audio' && this.name !== 'video') {
 					return component.error(

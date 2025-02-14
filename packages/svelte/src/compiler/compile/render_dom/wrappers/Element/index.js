@@ -142,6 +142,10 @@ const events = [
 		],
 		filter: (node, name) => node.is_media_node() && name === 'readyState'
 	},
+	{
+		event_names: ['loadstart', 'suspend', 'abort', 'error', 'emptied', 'loadedmetadata', 'canplay'],
+		filter: (node, name) => node.is_media_node() && name === 'networkState'
+	},
 	// details event
 	{
 		event_names: ['toggle'],

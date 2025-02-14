@@ -1,10 +1,10 @@
----
-title: Element directives
----
+***
 
-As well as attributes, elements can have _directives_, which control the element's behaviour in some way.
+## title: Element directives
 
-## on:_eventname_
+As well as attributes, elements can have *directives*, which control the element's behaviour in some way.
+
+## on:*eventname*
 
 ```svelte
 <!--- copy: false --->
@@ -42,7 +42,7 @@ Handlers can be declared inline with no performance penalty. As with attributes,
 </button>
 ```
 
-Add _modifiers_ to DOM events with the `|` character.
+Add *modifiers* to DOM events with the `|` character.
 
 ```svelte
 <form on:submit|preventDefault={handleSubmit}>
@@ -53,19 +53,19 @@ Add _modifiers_ to DOM events with the `|` character.
 
 The following modifiers are available:
 
-- `preventDefault` — calls `event.preventDefault()` before running the handler
-- `stopPropagation` — calls `event.stopPropagation()`, preventing the event reaching the next element
-- `stopImmediatePropagation` - calls `event.stopImmediatePropagation()`, preventing other listeners of the same event from being fired.
-- `passive` — improves scrolling performance on touch/wheel events (Svelte will add it automatically where it's safe to do so)
-- `nonpassive` — explicitly set `passive: false`
-- `capture` — fires the handler during the _capture_ phase instead of the _bubbling_ phase
-- `once` — remove the handler after the first time it runs
-- `self` — only trigger handler if `event.target` is the element itself
-- `trusted` — only trigger handler if `event.isTrusted` is `true`. I.e. if the event is triggered by a user action.
+* `preventDefault` — calls `event.preventDefault()` before running the handler
+* `stopPropagation` — calls `event.stopPropagation()`, preventing the event reaching the next element
+* `stopImmediatePropagation` - calls `event.stopImmediatePropagation()`, preventing other listeners of the same event from being fired.
+* `passive` — improves scrolling performance on touch/wheel events (Svelte will add it automatically where it's safe to do so)
+* `nonpassive` — explicitly set `passive: false`
+* `capture` — fires the handler during the *capture* phase instead of the *bubbling* phase
+* `once` — remove the handler after the first time it runs
+* `self` — only trigger handler if `event.target` is the element itself
+* `trusted` — only trigger handler if `event.isTrusted` is `true`. I.e. if the event is triggered by a user action.
 
 Modifiers can be chained together, e.g. `on:click|once|capture={...}`.
 
-If the `on:` directive is used without a value, the component will _forward_ the event, meaning that a consumer of the component can listen for it.
+If the `on:` directive is used without a value, the component will *forward* the event, meaning that a consumer of the component can listen for it.
 
 ```svelte
 <button on:click> The component itself will emit the click event </button>
@@ -90,7 +90,7 @@ It's possible to have multiple event listeners for the same event:
 <button on:click={increment} on:click={track}>Click me!</button>
 ```
 
-## bind:_property_
+## bind:*property*
 
 ```svelte
 <!--- copy: false --->
@@ -183,14 +183,16 @@ When the value of an `<option>` matches its text content, the attribute can be o
 
 Elements with the `contenteditable` attribute support the following bindings:
 
-- [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
-- [`innerText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText)
-- [`textContent`](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
+* [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
+* [`innerText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText)
+* [`textContent`](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
 
 There are slight differences between each of these, read more about them [here](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent#Differences_from_innerText).
 
 <!-- for some reason puts the comment and html on same line -->
+
 <!-- prettier-ignore -->
+
 ```svelte
 <div contenteditable="true" bind:innerHTML={html} />
 ```
@@ -206,23 +208,24 @@ There are slight differences between each of these, read more about them [here](
 
 ## Media element bindings
 
-Media elements (`<audio>` and `<video>`) have their own set of bindings — seven _readonly_ ones...
+Media elements (`<audio>` and `<video>`) have their own set of bindings — seven *readonly* ones...
 
-- `duration` (readonly) — the total duration of the video, in seconds
-- `buffered` (readonly) — an array of `{start, end}` objects
-- `played` (readonly) — ditto
-- `seekable` (readonly) — ditto
-- `seeking` (readonly) — boolean
-- `ended` (readonly) — boolean
-- `readyState` (readonly) — number between (and including) 0 and 4
+* `duration` (readonly) — the total duration of the video, in seconds
+* `buffered` (readonly) — an array of `{start, end}` objects
+* `played` (readonly) — ditto
+* `seekable` (readonly) — ditto
+* `seeking` (readonly) — boolean
+* `ended` (readonly) — boolean
+* `readyState` (readonly) — number between (and including) 0 and 4
+* `networkState` (readonly) — number between (and including) 0 and 3
 
-...and five _two-way_ bindings:
+...and five *two-way* bindings:
 
-- `currentTime` — the current playback time in the video, in seconds
-- `playbackRate` — how fast or slow to play the video, where 1 is 'normal'
-- `paused` — this one should be self-explanatory
-- `volume` — a value between 0 and 1
-- `muted` — a boolean value indicating whether the player is muted
+* `currentTime` — the current playback time in the video, in seconds
+* `playbackRate` — how fast or slow to play the video, where 1 is 'normal'
+* `paused` — this one should be self-explanatory
+* `volume` — a value between 0 and 1
+* `muted` — a boolean value indicating whether the player is muted
 
 Videos additionally have readonly `videoWidth` and `videoHeight` bindings.
 
@@ -236,6 +239,7 @@ Videos additionally have readonly `videoWidth` and `videoHeight` bindings.
 	bind:seeking
 	bind:ended
 	bind:readyState
+	bind:networkState
 	bind:currentTime
 	bind:playbackRate
 	bind:paused
@@ -250,8 +254,8 @@ Videos additionally have readonly `videoWidth` and `videoHeight` bindings.
 
 Image elements (`<img>`) have two readonly bindings:
 
-- `naturalWidth` (readonly) — the original width of the image, available after the image has loaded
-- `naturalHeight` (readonly) — the original height of the image, available after the image has loaded
+* `naturalWidth` (readonly) — the original width of the image, available after the image has loaded
+* `naturalHeight` (readonly) — the original height of the image, available after the image has loaded
 
 ```svelte
 <img
@@ -264,10 +268,10 @@ Image elements (`<img>`) have two readonly bindings:
 
 Block-level elements have 4 read-only bindings, measured using a technique similar to [this one](http://www.backalleycoder.com/2013/03/18/cross-browser-event-based-element-resize-detection/):
 
-- `clientWidth`
-- `clientHeight`
-- `offsetWidth`
-- `offsetHeight`
+* `clientWidth`
+* `clientHeight`
+* `offsetWidth`
+* `offsetHeight`
 
 ```svelte
 <div bind:offsetWidth={width} bind:offsetHeight={height}>
@@ -333,7 +337,7 @@ To get a reference to a DOM node, use `bind:this`.
 <canvas bind:this={canvasElement} />
 ```
 
-## class:_name_
+## class:*name*
 
 ```svelte
 <!--- copy: false --->
@@ -359,7 +363,7 @@ A `class:` directive provides a shorter way of toggling a class on an element.
 <div class:active class:inactive={!active} class:isAdmin>...</div>
 ```
 
-## style:_property_
+## style:*property*
 
 ```svelte
 style:property={value}
@@ -399,7 +403,7 @@ When `style:` directives are combined with `style` attributes, the directives wi
 <div style="color: blue;" style:color="red">This will be red</div>
 ```
 
-## use:_action_
+## use:*action*
 
 ```svelte
 <!--- copy: false --->
@@ -470,7 +474,7 @@ An action can have a parameter. If the returned value has an `update` method, it
 
 Read more in the [`svelte/action`](/docs/svelte-action) page.
 
-## transition:_fn_
+## transition:*fn*
 
 ```svelte
 <!--- copy: false --->
@@ -518,7 +522,7 @@ A transition is triggered by an element entering or leaving the DOM as a result 
 
 When a block is transitioning out, all elements inside the block, including those that do not have their own transitions, are kept in the DOM until every transition in the block has been completed.
 
-The `transition:` directive indicates a _bidirectional_ transition, which means it can be smoothly reversed while the transition is in progress.
+The `transition:` directive indicates a *bidirectional* transition, which means it can be smoothly reversed while the transition is in progress.
 
 ```svelte
 {#if visible}
@@ -526,7 +530,7 @@ The `transition:` directive indicates a _bidirectional_ transition, which means 
 {/if}
 ```
 
-Transitions are local by default (in Svelte 3, they were global by default). Local transitions only play when the block they belong to is created or destroyed, _not_ when parent blocks are created or destroyed.
+Transitions are local by default (in Svelte 3, they were global by default). Local transitions only play when the block they belong to is created or destroyed, *not* when parent blocks are created or destroyed.
 
 ```svelte
 {#if x}
@@ -558,9 +562,9 @@ Like actions, transitions can have parameters.
 
 Transitions can use custom functions. If the returned object has a `css` function, Svelte will create a CSS animation that plays on the element.
 
-The `t` argument passed to `css` is a value between `0` and `1` after the `easing` function has been applied. _In_ transitions run from `0` to `1`, _out_ transitions run from `1` to `0` — in other words, `1` is the element's natural state, as though no transition had been applied. The `u` argument is equal to `1 - t`.
+The `t` argument passed to `css` is a value between `0` and `1` after the `easing` function has been applied. *In* transitions run from `0` to `1`, *out* transitions run from `1` to `0` — in other words, `1` is the element's natural state, as though no transition had been applied. The `u` argument is equal to `1 - t`.
 
-The function is called repeatedly _before_ the transition begins, with different `t` and `u` arguments.
+The function is called repeatedly *before* the transition begins, with different `t` and `u` arguments.
 
 ```svelte
 <!--- file: App.svelte --->
@@ -591,7 +595,7 @@ The function is called repeatedly _before_ the transition begins, with different
 {/if}
 ```
 
-A custom transition function can also return a `tick` function, which is called _during_ the transition with the same `t` and `u` arguments.
+A custom transition function can also return a `tick` function, which is called *during* the transition with the same `t` and `u` arguments.
 
 > If it's possible to use `css` instead of `tick`, do so — CSS animations can run off the main thread, preventing jank on slower devices.
 
@@ -635,16 +639,16 @@ Transition functions also receive a third argument, `options`, which contains in
 
 Available values in the `options` object are:
 
-- `direction` - one of `in`, `out`, or `both` depending on the type of transition
+* `direction` - one of `in`, `out`, or `both` depending on the type of transition
 
 ## Transition events
 
 An element with transitions will dispatch the following events in addition to any standard DOM events:
 
-- `introstart`
-- `introend`
-- `outrostart`
-- `outroend`
+* `introstart`
+* `introend`
+* `outrostart`
+* `outroend`
 
 ```svelte
 {#if visible}
@@ -660,7 +664,7 @@ An element with transitions will dispatch the following events in addition to an
 {/if}
 ```
 
-## in:_fn_/out:_fn_
+## in:*fn*/out:*fn*
 
 ```svelte
 <!--- copy: false --->
@@ -732,7 +736,7 @@ Unlike with `transition:`, transitions applied with `in:` and `out:` are not bid
 {/if}
 ```
 
-## animate:_fn_
+## animate:*fn*
 
 ```svelte
 <!--- copy: false --->
@@ -771,7 +775,7 @@ DOMRect {
 }
 ```
 
-An animation is triggered when the contents of a [keyed each block](/docs/logic-blocks#each) are re-ordered. Animations do not run when an element is added or removed, only when the index of an existing data item within the each block changes. Animate directives must be on an element that is an _immediate_ child of a keyed each block.
+An animation is triggered when the contents of a [keyed each block](/docs/logic-blocks#each) are re-ordered. Animations do not run when an element is added or removed, only when the index of an existing data item within the each block changes. Animate directives must be on an element that is an *immediate* child of a keyed each block.
 
 Animations can be used with Svelte's [built-in animation functions](/docs/svelte-animate) or [custom animation functions](/docs/element-directives#custom-animation-functions).
 
@@ -802,7 +806,7 @@ If the returned object has a `css` method, Svelte will create a CSS animation th
 
 The `t` argument passed to `css` is a value that goes from `0` and `1` after the `easing` function has been applied. The `u` argument is equal to `1 - t`.
 
-The function is called repeatedly _before_ the animation begins, with different `t` and `u` arguments.
+The function is called repeatedly *before* the animation begins, with different `t` and `u` arguments.
 
 <!-- TODO: Types -->
 
@@ -835,7 +839,7 @@ The function is called repeatedly _before_ the animation begins, with different 
 {/each}
 ```
 
-A custom animation function can also return a `tick` function, which is called _during_ the animation with the same `t` and `u` arguments.
+A custom animation function can also return a `tick` function, which is called *during* the animation with the same `t` and `u` arguments.
 
 > If it's possible to use `css` instead of `tick`, do so — CSS animations can run off the main thread, preventing jank on slower devices.
 

@@ -6,9 +6,10 @@ import add_actions from './shared/add_actions.js';
 
 const associated_events = {
 	fullscreenElement: ['fullscreenchange'],
-	visibilityState: ['visibilitychange']
+	visibilityState: ['visibilitychange'],
+	pictureInPictureElement: ['enterpictureinpicture', 'leavepictureinpicture'],
 };
-const readonly = new Set(['fullscreenElement', 'visibilityState']);
+const readonly = new Set(['fullscreenElement', 'visibilityState', 'pictureInPictureElement']);
 
 /** @extends Wrapper<import('../../nodes/Document.js').default> */
 export default class DocumentWrapper extends Wrapper {

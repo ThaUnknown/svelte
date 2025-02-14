@@ -919,6 +919,7 @@ export interface HTMLMediaAttributes<T extends HTMLMediaElement> extends HTMLAtt
 	 */
 	volume?: number | undefined | null;
 
+	readonly 'bind:networkState'?: 0 | 1 | 2 | 3 | undefined | null;
 	readonly 'bind:readyState'?: 0 | 1 | 2 | 3 | 4 | undefined | null;
 	readonly 'bind:duration'?: number | undefined | null;
 	readonly 'bind:buffered'?: SvelteMediaTimeRange[] | undefined | null;
@@ -1144,6 +1145,7 @@ export interface SvelteMediaTimeRange {
 export interface SvelteDocumentAttributes extends HTMLAttributes<Document> {
 	readonly 'bind:fullscreenElement'?: Document['fullscreenElement'] | undefined | null;
 	readonly 'bind:visibilityState'?: Document['visibilityState'] | undefined | null;
+	readonly 'bind:pictureInPictureElement'?: Document['pictureInPictureElement'] | undefined | null;
 }
 
 export interface SvelteWindowAttributes extends HTMLAttributes<Window> {

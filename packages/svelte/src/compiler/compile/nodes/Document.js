@@ -7,7 +7,7 @@ import list from '../../utils/list.js';
 import compiler_warnings from '../compiler_warnings.js';
 import compiler_errors from '../compiler_errors.js';
 
-const valid_bindings = ['fullscreenElement', 'visibilityState'];
+const valid_bindings = ['fullscreenElement', 'visibilityState', 'pictureInPictureElement'];
 
 /** @extends Node<'Document'> */
 export default class Document extends Node {

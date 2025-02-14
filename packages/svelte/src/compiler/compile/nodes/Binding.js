@@ -18,7 +18,8 @@ const read_only_media_attributes = new Set([
 	'videoWidth',
 	'naturalWidth',
 	'naturalHeight',
-	'readyState'
+	'readyState',
+	'networkState'
 ]);
 
 /** @extends Node<'Binding'> */

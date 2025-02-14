@@ -1,6 +1,6 @@
----
-title: Special elements
----
+***
+
+## title: Special elements
 
 ## `<slot>`
 
@@ -39,7 +39,7 @@ The content is exposed in the child component using the `<slot>` element, which 
 
 Note: If you want to render regular `<slot>` element, You can use `<svelte:element this="slot" />`.
 
-### `<slot name="`_name_`">`
+### `<slot name="`*name*`">`
 
 Named slots allow consumers to target specific areas. They can also have fallback content.
 
@@ -103,9 +103,9 @@ Note that explicitly passing in an empty named slot will add that slot's name to
 </Card>
 ```
 
-### `<slot key={`_value_`}>`
+### `<slot key={`*value*`}>`
 
-Slots can be rendered zero or more times and can pass values _back_ to the parent using props. The parent exposes the values to the slot template using the `let:` directive.
+Slots can be rendered zero or more times and can pass values *back* to the parent using props. The parent exposes the values to the slot template using the `let:` directive.
 
 The usual shorthand rules apply — `let:item` is equivalent to `let:item={item}`, and `<slot {item}>` is equivalent to `<slot item={item}>`.
 
@@ -233,14 +233,14 @@ Unlike `<svelte:self>`, this element may only appear at the top level of your co
 
 You can also bind to the following properties:
 
-- `innerWidth`
-- `innerHeight`
-- `outerWidth`
-- `outerHeight`
-- `scrollX`
-- `scrollY`
-- `online` — an alias for `window.navigator.onLine`
-- `devicePixelRatio`
+* `innerWidth`
+* `innerHeight`
+* `outerWidth`
+* `outerHeight`
+* `scrollX`
+* `scrollY`
+* `online` — an alias for `window.navigator.onLine`
+* `devicePixelRatio`
 
 All except `scrollX` and `scrollY` are readonly.
 
@@ -270,8 +270,9 @@ As with `<svelte:window>`, this element may only appear the top level of your co
 
 You can also bind to the following properties:
 
-- `fullscreenElement`
-- `visibilityState`
+* `fullscreenElement`
+* `pictureInPictureElement`
+* `visibilityState`
 
 All are readonly.
 
@@ -314,12 +315,12 @@ As with `<svelte:window>`, `<svelte:document>` and `<svelte:body>`, this element
 
 The `<svelte:options>` element provides a place to specify per-component compiler options, which are detailed in the [compiler section](/docs/svelte-compiler#compile). The possible options are:
 
-- `immutable={true}` — you never use mutable data, so the compiler can do simple referential equality checks to determine if values have changed
-- `immutable={false}` — the default. Svelte will be more conservative about whether or not mutable objects have changed
-- `accessors={true}` — adds getters and setters for the component's props
-- `accessors={false}` — the default
-- `namespace="..."` — the namespace where this component will be used, most commonly "svg"; use the "foreign" namespace to opt out of case-insensitive attribute names and HTML-specific warnings
-- `customElement="..."` — the name to use when compiling this component as a custom element
+* `immutable={true}` — you never use mutable data, so the compiler can do simple referential equality checks to determine if values have changed
+* `immutable={false}` — the default. Svelte will be more conservative about whether or not mutable objects have changed
+* `accessors={true}` — adds getters and setters for the component's props
+* `accessors={false}` — the default
+* `namespace="..."` — the namespace where this component will be used, most commonly "svg"; use the "foreign" namespace to opt out of case-insensitive attribute names and HTML-specific warnings
+* `customElement="..."` — the name to use when compiling this component as a custom element
 
 ```svelte
 <svelte:options customElement="my-custom-element" />

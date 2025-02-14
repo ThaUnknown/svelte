@@ -131,6 +131,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { seeking } = $$props;
 	let { ended } = $$props;
 	let { readyState } = $$props;
+	let { networkState } = $$props;
 
 	function audio_progress_handler() {
 		buffered = time_ranges_to_array(this.buffered);
@@ -190,6 +191,11 @@ function instance($$self, $$props, $$invalidate) {
 		$$invalidate(11, readyState);
 	}
 
+	function audio_loadstart_suspend_abort_error_emptied_loadedmetadata_canplay_handler() {
+		networkState = this.networkState;
+		$$invalidate(12, networkState);
+	}
+
 	$$self.$$set = $$props => {
 		if ('buffered' in $$props) $$invalidate(0, buffered = $$props.buffered);
 		if ('seekable' in $$props) $$invalidate(1, seekable = $$props.seekable);
@@ -203,6 +209,7 @@ function instance($$self, $$props, $$invalidate) {
 		if ('seeking' in $$props) $$invalidate(9, seeking = $$props.seeking);
 		if ('ended' in $$props) $$invalidate(10, ended = $$props.ended);
 		if ('readyState' in $$props) $$invalidate(11, readyState = $$props.readyState);
+		if ('networkState' in $$props) $$invalidate(12, networkState = $$props.networkState);
 	};
 
 	return [
@@ -218,6 +225,7 @@ function instance($$self, $$props, $$invalidate) {
 		seeking,
 		ended,
 		readyState,
+		networkState,
 		audio_progress_handler,
 		audio_loadedmetadata_handler,
 		audio_timeupdate_handler,
@@ -227,7 +235,8 @@ function instance($$self, $$props, $$invalidate) {
 		audio_ratechange_handler,
 		audio_seeking_seeked_handler,
 		audio_ended_handler,
-		audio_loadedmetadata_loadeddata_canplay_canplaythrough_playing_waiting_emptied_handler
+		audio_loadedmetadata_loadeddata_canplay_canplaythrough_playing_waiting_emptied_handler,
+		audio_loadstart_suspend_abort_error_emptied_loadedmetadata_canplay_handler
 	];
 }
 
@@ -247,7 +256,8 @@ class Component extends SvelteComponent {
 			playbackRate: 8,
 			seeking: 9,
 			ended: 10,
-			readyState: 11
+			readyState: 11,
+			networkState: 12
 		});
 	}
 }
